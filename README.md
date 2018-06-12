@@ -34,7 +34,7 @@ ya viene preconfigurado para trabajar con rollup, dando soporte por defecto sobr
 
 - [node-resolve](https://github.com/rollup/rollup-plugin-node-resolve) : permite importar modulos desde node_modules, hacia el bundle js final.
 - [postcss](https://postcss.org/) : permite extender fasilmente el codigo css.
-   - [cssnext](http://cssnext.io) : añade soporte para funcionalidades actuales dentro del css.
+   - [postcss-preset-env](https://preset-env.cssdb.org/) : añade soporte para funcionalidades actuales dentro del css.
    - [css-mqpacker](https://github.com/hail2u/node-css-mqpacker) : permite reducir el tamaño del css agrupando reglas de media.
    - [merge-rules](https://github.com/ben-eb/postcss-merge-rules) : permite reducir el tamaño del css agrupando reglas de selectores.
    - [cssnano](http://cssnano.co/) : comprime el codigo css.
