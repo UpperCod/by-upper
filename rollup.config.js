@@ -5,7 +5,7 @@ import postcss from "rollup-plugin-postcss";
 import cssMqpacker from "css-mqpacker";
 import mergeRules from "postcss-merge-rules";
 import cssnano from "cssnano";
-import cssnext from "postcss-cssnext";
+import presetEnv from "postcss-preset-env";
 
 export default {
     input: "assets/index.js",
@@ -23,7 +23,14 @@ export default {
         postcss({
             extract: true,
             modules: false,
-            plugins: [cssnext, mergeRules, cssMqpacker, cssnano]
+            plugins: [
+                presetEnv({
+                    browsers: "last 2 versions"
+                }),
+                mergeRules,
+                cssMqpacker,
+                cssnano
+            ]
         }),
         buble({
             jsx: "h",
