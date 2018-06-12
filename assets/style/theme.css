@@ -1,0 +1,18 @@
+body, html, main{
+    height: 100%;
+}
+
+.row,
+.col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex :0%;
+    box-sizing: border-box;
+}
+.row{
+    flex-flow:  row wrap;
+}
+.col{
+    flex-flow:  column wrap;
+}
