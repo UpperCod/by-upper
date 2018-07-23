@@ -23,10 +23,6 @@
         <meta property="og:image"        content="{{page.thumbnail.src}}" />
         <meta property="og:site_name"    content="{{site.name}}" />
         {# Metadata:ld-json #}
-        <!--opts
-
-            {{getOptions()}}
-        -->
         <script  type="application/ld+json">
         {  
             "@context":"http://schema.org",
@@ -64,13 +60,26 @@
             <link rel="stylesheet" href="{{theme.link}}/static/bundle.css">
         {% endblock %}
     </head>
-    <body class="{{theme.classBody}}">
-        {% include 'views/includes/header.twig' %}
-        <main>
-            {% block content %}
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium quisquam doloribus perferendis temporibus, sit ad assumenda eum corrupti illo labore quaerat vitae libero sequi ipsam at magnam saepe molestiae atque.
-            {% endblock %}
+    {% block body %}
+        <body class="{{getClassBody(customClassBody)}}">
+    {% endblock %}
+        <main data-scroll>
+        {% block header %}
+            {% include 'views/includes/header.twig' %}
+        {% endblock %}
+        {% block content %}
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                Praesentium quisquam doloribus perferendis temporibus, 
+                sit ad assumenda eum corrupti illo labore quaerat 
+                vitae libero sequi ipsam at magnam saepe 
+                molestiae atque.
+                {% endblock %}
+                {% block footer %}
+                    {% include 'views/includes/footer.twig' %}
+                {% endblock %}
+                {% block finally  %}
+                    <script src="{{theme.link}}/static/bundle.js"></script>
+                {% endblock %}
         </main>
-        {% include 'views/includes/footer.twig' %}
     </body>
 </html>

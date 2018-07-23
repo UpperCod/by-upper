@@ -1,5 +1,6 @@
 import resolve from "rollup-plugin-node-resolve";
 import buble from "rollup-plugin-buble";
+import commontjs from "rollup-plugin-commonjs";
 
 import postcss from "rollup-plugin-postcss";
 import cssMqpacker from "css-mqpacker";
@@ -19,6 +20,9 @@ export default {
         resolve({
             jsnext: true,
             main: true
+        }),
+        commontjs({
+            include: "node_modules/**"
         }),
         postcss({
             extract: true,
