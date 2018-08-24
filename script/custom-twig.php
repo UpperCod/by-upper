@@ -13,21 +13,25 @@ class CustomTwig extends \Twig_Extension{
             new \Twig_SimpleFunction('getOptions', [$this,'getOptions']),
             new \Twig_SimpleFunction('getClassBody', [$this,'getClassBody']),
             new \Twig_SimpleFunction('setStyleInline', [$this,'setStyleInline']),
+            new \Twig_SimpleFunction('getField', [$this,'getField']),
         ];
     }
+    
     function getFilters(){
         return [
             new \Twig_SimpleFilter('normalize', [$this,'normalize']),
         ];
+    }
+    function getField(...$args){
+        return get_field(...$args);
     }
     function getOptions(){
         if(!$this->isEnable("ACF")) return false;
         if(isset($this->_options)) return $this->_options;
         return $this->_options = get_fields( 'options' );
     }
-    function getMenu(){
-        if(isset($this->_menu)) return $this->_menu;
-        return $this->_menu = new Timber\Menu;
+    function getMenu(...$args){
+        return new Timber\Menu(...$args);
     }
     function getPosts($query){
         return Timber\Timber::get_posts($query);
@@ -79,8 +83,12 @@ class CustomTwig extends \Twig_Extension{
         return join(" ",$props);
     }
     function normalize($content){
-        $content = strip_tags($content,"<strong><br>");
-        return join("<br>",explode(PHP_EOL,$content));
+        $content = strip_tags($content,"<strong><br><a>");
+        return str_replace(
+            "<br /><br>",
+            "<br>",
+            join("<br>",explode(PHP_EOL,$content))
+        );
     }
     function isEnable($find){
         switch($find){

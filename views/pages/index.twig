@@ -14,20 +14,42 @@
             Hola!
         </h1>
         <p>
-            Lo que vez ahora es una base inicial para los sitios creados por Upper<br><br>
+            Lo que ves ahora es una base inicial para los sitios creados por Upper<br><br>
         </p>
         <div class="row">
                 <div class="row" style="border-radius:100px;border:1px solid black;opacity:.5">
-                        <div class="row" style="border-right:1px solid black">
+                        <div class="row" {{setAttrs({
+                            style : {
+                                "border-right" : "1px solid black"
+                            }
+                        })}}>
                                 <a href="https://timber.github.io/docs/">
-                                    <button>Regresar al sitio principal</button>
+                                    <button>Timber</button>
                                 </a>
+                        </div>
+                        <div class="row" {{setAttrs({
+                            style : {
+                                "border-right" : "1px solid black"
+                            }
+                        })}}>
+                                <a href="https://twig.symfony.com/">
+                                    <button>Twig</button>
+                                </a>
+                        </div>
+                        <div class="row" {{setAttrs({
+                            style : {
+                                "border-right" : "1px solid black"
+                            }
+                        })}}>
+                            <a href="https://www.advancedcustomfields.com/">
+                                <button>Acf</button>
+                            </a>
                         </div>
                         <div class="row">
-                                <a href="https://twig.symfony.com/">
-                                    <button>Regresar al sitio principal</button>
-                                </a>
-                        </div>
+                            <a href="https://github.com/uppercod/by-upper">
+                                <button>Tema</button>
+                            </a>
+                       </div>
                 </div>
         </div>
     </div>
