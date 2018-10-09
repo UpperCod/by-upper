@@ -14,6 +14,7 @@ class CustomTwig extends \Twig_Extension{
             new \Twig_SimpleFunction('getClassBody', [$this,'getClassBody']),
             new \Twig_SimpleFunction('setStyleInline', [$this,'setStyleInline']),
             new \Twig_SimpleFunction('getField', [$this,'getField']),
+            new \Twig_SimpleFunction('loadAfter', [$this,'loadAfter']),
         ];
     }
     
@@ -117,6 +118,37 @@ class CustomTwig extends \Twig_Extension{
             }
         }
         return ($size ? join(" ",$words) : $string).$add;
+    }
+    function loadAfter($url = false,$show = true){
+        $this->_loadAfter =  $this->_loadAfter ?? [
+            "script" => [],
+            "style"  => [],
+            "ignore" => []
+        ];
+
+        $ignore = &$this->_loadAfter["ignore"];
+        
+        if($url){
+            $type = preg_match("/\.js$/",$url) ? "script" : "style";
+            if(!in_array($url,$this->_loadAfter[$type])){
+                array_push($this->_loadAfter[$type],$url);
+            }
+            if(!$show && !in_array($url,$ignore)){
+                array_push($ignore,$url);
+            }
+        }else{
+            $html = "";
+            foreach($this->_loadAfter["script"] as $url){
+                if(in_array($url,$ignore)) continue;
+                $html.="<script src='{$url}'></script>";
+                
+            }
+            foreach($this->_loadAfter["style"] as $url){
+                if(in_array($url,$ignore)) continue;
+                $html.="<link rel='stylesheet' type='text/css' href='{$url}'>";
+            }
+            return $html;
+        }
     }
 }
 

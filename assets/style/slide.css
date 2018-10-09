@@ -1,7 +1,8 @@
 @import "./theme.css";
 .Slide {
     &.box {
-        height: 100%;
+        width: 100%;
+        height: auto;
         background: var(--theme-primary);
         padding: 150px 1rem;
         box-shadow: border-box;

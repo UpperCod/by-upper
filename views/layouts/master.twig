@@ -57,6 +57,7 @@
         {{fn("wp_head")}}
         {% block head %}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css">
+            <link href="https://fonts.googleapis.com/css?family=Arvo:700|Montserrat|Reenie+Beanie" rel="stylesheet">
             <link rel="stylesheet" href="{{theme.link}}/static/bundle.css">
         {% endblock %}
     </head>
@@ -64,22 +65,25 @@
         <body class="{{getClassBody(customClassBody)}}">
     {% endblock %}
         <main data-scroll>
-        {% block header %}
-            {% include 'views/includes/header.twig' %}
-        {% endblock %}
-        {% block content %}
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                Praesentium quisquam doloribus perferendis temporibus, 
-                sit ad assumenda eum corrupti illo labore quaerat 
-                vitae libero sequi ipsam at magnam saepe 
-                molestiae atque.
-                {% endblock %}
-                {% block footer %}
-                    {% include 'views/includes/footer.twig' %}
-                {% endblock %}
-                {% block finally  %}
-                    <script src="{{theme.link}}/static/bundle.js"></script>
-                {% endblock %}
+            {# header #}
+            {% block header %}
+                {% include 'views/includes/header.twig' %}
+            {% endblock %}
+            {# content #}
+            {% block content %}
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    Praesentium quisquam doloribus perferendis temporibus, 
+                    sit ad assumenda eum corrupti illo labore quaerat 
+                    vitae libero sequi ipsam at magnam saepe 
+                    molestiae atque.
+            {% endblock %}
+            {# footer #}
+            {% block footer %}
+                {% include 'views/includes/footer.twig' %}
+            {% endblock %}
         </main>
+        {# loadAfter #}
+        {{ loadAfter(theme.link~"/static/bundle.js") }}
+        {{ loadAfter() }}
     </body>
 </html>

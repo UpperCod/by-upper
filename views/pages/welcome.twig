@@ -1,7 +1,7 @@
 {% extends 'views/layouts/master.twig' %}
 
 {% block content %}
-    <section class="Slide box">
-        
-    </section>
+    {% for item in page.get_field('blocks') %}
+        {% include "views/includes/welcome/"~ item.acf_fc_layout ~".twig" with item %}
+    {% endfor %}
 {% endblock %}
