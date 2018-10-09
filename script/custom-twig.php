@@ -20,6 +20,7 @@ class CustomTwig extends \Twig_Extension{
     function getFilters(){
         return [
             new \Twig_SimpleFilter('normalize', [$this,'normalize']),
+            new \Twig_SimpleFilter('summary', [$this,'summary']),
         ];
     }
     function getField(...$args){
@@ -99,6 +100,23 @@ class CustomTwig extends \Twig_Extension{
                 return function_exists($find);
 
         }
+    }
+    function summary($string,$max, $end = "..."){
+        $string = strip_tags($string);
+        $word = explode(" ",$string);
+        $size = 0;
+        $words = [];
+        $add = "";
+        foreach($word as $value){
+            $size += strlen($value);
+            if($max < $size){
+                $add = $end;
+                break;
+            }else{
+                $words[] = $value;
+            }
+        }
+        return ($size ? join(" ",$words) : $string).$add;
     }
 }
 
