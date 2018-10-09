@@ -1,5 +1,7 @@
+@import "./theme.css";
 .Slide {
     &.box {
         height: 100%;
+        background: var(--theme-primary);
     }
 }
