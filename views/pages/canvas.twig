@@ -1,0 +1,9 @@
+{% extends 'views/layouts/master.twig' %}
+
+{% block content %}
+    <style>
+        html,body{width:100%;height:100%;margin:0px;padding:0px}
+        .elementor-field{text-align:center;padding-top:.8rem!important;padding-bottom:.8rem!important;}
+    </style>
+    {{fn("the_content")}}
+{% endblock %}
