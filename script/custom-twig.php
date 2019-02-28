@@ -15,6 +15,7 @@ class CustomTwig extends \Twig_Extension{
             new \Twig_SimpleFunction('setStyleInline', [$this,'setStyleInline']),
             new \Twig_SimpleFunction('getField', [$this,'getField']),
             new \Twig_SimpleFunction('loadAfter', [$this,'loadAfter']),
+            new \Twig_SimpleFunction('client', [$this,'client'])
         ];
     }
     
@@ -148,6 +149,29 @@ class CustomTwig extends \Twig_Extension{
                 $html.="<link rel='stylesheet' type='text/css' href='{$url}'>";
             }
             return $html;
+        }
+    }
+    function client($type){
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        switch($type){
+            case "chrome":
+                return preg_match("/(?:chrome|crios)\/(\d+)/i",$user_agent);
+                case "safari":
+                return preg_match("/version\/(\d+).+?safari/i",$user_agent);
+            case "firefox":
+                return preg_match("/(?:firefox|fxios)\/(\d+)/i",$user_agent);
+            case "iphone":
+                return preg_match("/iphone(?:.+?os (\d+))?/i",$user_agent);
+            case "ipad":
+                return preg_match("/ipad.+?os (\d+)/i",$user_agent);
+            case "ie":
+                return preg_match("/(?:msie |trident.+?; rv:)(\d+)/i",$user_agent);
+            case "android":
+                return preg_match("/android/i",$user_agent);
+            case "edge":
+                return preg_match("/edge\/(\d+)/i",$user_agent);
+            default:
+                return false;
         }
     }
 }
