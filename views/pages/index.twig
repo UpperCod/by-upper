@@ -1,57 +1,7 @@
 {% extends 'views/layouts/master.twig' %}
 
 {% block content %}
-<link href="https://fonts.googleapis.com/css?family=Muli:200,400" rel="stylesheet">
-<style>
-    body{font-family: 'Muli', sans-serif;}
-    h1{font-size: 10vh;font-weight : 100;margin:0px}
-    p{text-align: center;opacity:.5}
-    button{background: transparent;border:none;padding:.5rem 1.2rem;font-size:14px;cursor:pointer}
-</style>
-<div class="row" style="height:100%;padding: 1rem;">
-    <div class="col">
-        <h1>
-            Hola!
-        </h1>
-        <p>
-            Lo que ves ahora es una base inicial para los sitios creados por Upper<br><br>
-        </p>
-        <div class="row">
-                <div class="row" style="border-radius:100px;border:1px solid black;opacity:.5">
-                        <div class="row" {{setAttrs({
-                            style : {
-                                "border-right" : "1px solid black"
-                            }
-                        })}}>
-                                <a href="https://timber.github.io/docs/">
-                                    <button>Timber</button>
-                                </a>
-                        </div>
-                        <div class="row" {{setAttrs({
-                            style : {
-                                "border-right" : "1px solid black"
-                            }
-                        })}}>
-                                <a href="https://twig.symfony.com/">
-                                    <button>Twig</button>
-                                </a>
-                        </div>
-                        <div class="row" {{setAttrs({
-                            style : {
-                                "border-right" : "1px solid black"
-                            }
-                        })}}>
-                            <a href="https://www.advancedcustomfields.com/">
-                                <button>Acf</button>
-                            </a>
-                        </div>
-                        <div class="row">
-                            <a href="https://github.com/uppercod/by-upper">
-                                <button>Tema</button>
-                            </a>
-                       </div>
-                </div>
-        </div>
-    </div>
-</div>
+
+
+
 {% endblock %}

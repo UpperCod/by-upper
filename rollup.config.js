@@ -1,49 +1,41 @@
+import pkg from "./package.json";
 import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
-import buble from "rollup-plugin-buble";
-
+import { terser } from "rollup-plugin-terser";
+import sucrase from "rollup-plugin-sucrase";
+import del from "rollup-plugin-delete";
 import postcss from "rollup-plugin-postcss";
-import cssMqpacker from "css-mqpacker";
-import mergeRules from "postcss-merge-rules";
-import cssnano from "cssnano";
-import cssimport from "postcss-import";
-import cssProperties from "postcss-custom-props";
-import presetEnv from "postcss-preset-env";
+
+
+let plugins = [
+	del({
+		targets: [pkg.output]
+	}),
+	resolve({
+		extensions: [".js", ".ts"]
+	}),
+	postcss({
+		minimize: true
+	}),
+	sucrase({
+		production: true,
+		exclude: ["node_modules/**"],
+		jsxPragma: "h",
+		transforms: ["typescript", "jsx"]
+	})
+];
+
+if (!process.env.ROLLUP_WATCH) {
+	plugins.push(terser());
+}
 
 export default {
-    input: "assets/index.js",
-    output: {
-        file: "static/bundle.js",
-        format: "iife",
-        name: "bundle"
-    },
-    sourceMap: true,
-    plugins: [
-        resolve({
-            jsnext: true,
-            main: true
-        }),
-        commonjs({
-            include: "node_modules/**"
-        }),
-        postcss({
-            extract: true,
-            modules: false,
-            plugins: [
-                cssimport,
-                presetEnv({
-                    stage: 0,
-                    browsers: "last 2 versions"
-                }),
-                cssProperties(),
-                mergeRules,
-                cssMqpacker,
-                cssnano
-            ]
-        }),
-        buble({
-            jsx: "h",
-            objectAssign: "Object.assign"
-        })
-    ]
+	input: pkg.source,
+	output: [
+		{
+			dir: pkg.output,
+			format: "esm",
+			sourcemap: true
+		}
+	],
+	plugins
 };
