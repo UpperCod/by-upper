@@ -5,6 +5,8 @@ import sucrase from "rollup-plugin-sucrase";
 import del from "rollup-plugin-delete";
 import importCss from "@atomico/rollup-plugin-import-css";
 import postcss from "rollup-plugin-postcss";
+import cssnano from "cssnano";
+
 let plugins = [
 	del({
 		targets: [pkg.output]
@@ -12,9 +14,14 @@ let plugins = [
 	resolve({
 		extensions: [".js", ".ts"]
 	}),
-	importCss(),
+	importCss({
+		include: [/\web-components(\/|\\)([^\.]+)\.css$/]
+	}),
 	postcss({
-		exclude: [/\web-components\//]
+		exclude: [/\web-components(\/|\\)/],
+		extract: true,
+		modules: false,
+		plugins: [cssnano()]
 	}),
 	sucrase({
 		production: true,
