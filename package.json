@@ -11,11 +11,11 @@
 		"prepare": "npm run build"
 	},
 	"dependencies": {
-		"@atomico/core": "^1.4.x",
-		"@atomico/router": "^0.1.x",
-		"@atomico/element": "^0.6.x"
+		"@atomico/core": "^1.5.1",
+		"@atomico/element": "^0.6.6"
 	},
 	"devDependencies": {
+		"@atomico/rollup-plugin-import-css": "^1.0.3",
 		"rollup": "^1.7.4",
 		"rollup-plugin-browsersync": "^1.0.0",
 		"rollup-plugin-bundle-size": "^1.0.3",
@@ -23,6 +23,8 @@
 		"rollup-plugin-node-resolve": "^4.0.1",
 		"rollup-plugin-postcss": "^2.0.3",
 		"rollup-plugin-sucrase": "^2.1.0",
-		"rollup-plugin-terser": "^4.0.4"
+		"rollup-plugin-terser": "^4.0.4",
+		"rollup-pluginutils": "^2.7.0",
+		"siema": "^1.5.1"
 	}
 }

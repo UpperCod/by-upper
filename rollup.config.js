@@ -3,9 +3,8 @@ import resolve from "rollup-plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import sucrase from "rollup-plugin-sucrase";
 import del from "rollup-plugin-delete";
+import importCss from "@atomico/rollup-plugin-import-css";
 import postcss from "rollup-plugin-postcss";
-
-
 let plugins = [
 	del({
 		targets: [pkg.output]
@@ -13,8 +12,9 @@ let plugins = [
 	resolve({
 		extensions: [".js", ".ts"]
 	}),
+	importCss(),
 	postcss({
-		minimize: true
+		exclude: [/\web-components\//]
 	}),
 	sucrase({
 		production: true,
