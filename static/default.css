@@ -4,7 +4,6 @@ body {
 	height: 100%;
 	margin: 0px;
 	background: #f1f1f9;
-	font-family: Arial, Helvetica, sans-serif;
 }
 
 a,
@@ -13,4 +12,10 @@ textarea,
 button {
 	color: unset;
 	font-family: unset;
+}
+
+body {
+	--theme-primary: #f3ca25;
+	--theme-second: #8a97aa;
+	--theme-dark: #393939;
 }

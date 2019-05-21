@@ -1,10 +1,10 @@
 .SlideBox {
 	width: 100%;
 	height: 100%;
-	display: flex;
+	display: grid;
 	grid-template:
-		"header header header aside"
-		"footer footer footer aside";
+		"header header header aside" 66%
+		"footer footer footer aside" auto;
 }
 
 .SlideBoxHeader {
@@ -13,7 +13,17 @@
 
 .SlideBoxFooter {
 	grid-area: footer;
+	display: grid;
+	grid-auto-flow: column;
+	background: var(--theme-primary, gold);
 }
+
 .SlideBoxAside {
-	grid-area: footer;
+	grid-area: aside;
+	display: grid;
+	grid-auto-flow: row;
+	background: var(--theme-dark, black);
+}
+.SlideBoxAside > *:nth-child(even) {
+	background: var(--theme-second, teal);
 }
