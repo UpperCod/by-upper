@@ -59,7 +59,7 @@
         {{fn("wp_head")}}
         {% block head %}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css">
-            <style>{% include "static/default.css" %}</style>
+            <style>{% include "static/default.css" %}{% include "static/js/index.css" %}</style>
         {% endblock %}
     </head>
     {% block body %}
@@ -69,20 +69,18 @@
             {% block header %}
                 {% include 'views/includes/header.twig' %}
             {% endblock %}
-            <main>
-                {# content #}
-                {% block content %}
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                        Praesentium quisquam doloribus perferendis temporibus, 
-                        sit ad assumenda eum corrupti illo labore quaerat 
-                        vitae libero sequi ipsam at magnam saepe 
-                        molestiae atque.
-                {% endblock %}
-                {# footer #}
-                {% block footer %}
-                    {% include 'views/includes/footer.twig' %}
-                {% endblock %}
-            </main>
+            {# content #}
+            {% block content %}
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    Praesentium quisquam doloribus perferendis temporibus, 
+                    sit ad assumenda eum corrupti illo labore quaerat 
+                    vitae libero sequi ipsam at magnam saepe 
+                    molestiae atque.
+            {% endblock %}
+            {# footer #}
+            {% block footer %}
+                {% include 'views/includes/footer.twig' %}
+            {% endblock %}
         <script type="module" src="{{theme.link}}/static/js/index.js"></script>
     </body>
 </html>

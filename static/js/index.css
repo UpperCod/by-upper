@@ -1,9 +1,1 @@
-.Slide {
-	width: 100%;
-	height: 100%;
-	display: flex;
-}
-.SlideBoxLeft {
-}
-.SlideBoxRight {
-}
+.SlideBox{width:100%;height:100%;display:flex;grid-template:"header header header aside" "footer footer footer aside"}.SlideBoxHeader{grid-area:header}.SlideBoxAside,.SlideBoxFooter{grid-area:footer}

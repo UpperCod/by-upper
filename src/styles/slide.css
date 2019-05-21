@@ -1,9 +1,19 @@
-.Slide {
+.SlideBox {
 	width: 100%;
 	height: 100%;
 	display: flex;
+	grid-template:
+		"header header header aside"
+		"footer footer footer aside";
 }
-.SlideBoxLeft {
+
+.SlideBoxHeader {
+	grid-area: header;
 }
-.SlideBoxRight {
+
+.SlideBoxFooter {
+	grid-area: footer;
+}
+.SlideBoxAside {
+	grid-area: footer;
 }
