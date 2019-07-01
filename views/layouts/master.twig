@@ -1,31 +1,38 @@
+{% spaceless %}
 <!DOCTYPE html>
 <html lang="es_CL">
     <head>
         <meta charset="UTF-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="{{theme.link}}/static/favicon.png">
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <meta content="IE=edge" http-equiv="X-UA-Compatible">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <link
+        rel="shortcut icon" href="{{theme.link}}/static/favicon.png">
         {# metadata:seo #}
-        <title> {{ wp_title }} </title>
+        <title>
+            {{ wp_title }}
+        </title>
         {% if enable_seo %}
-            <meta name="description" content="{{ page.content| default(site.description) | excerpt(15) }}"> 
-            <meta name="author" content="{{site.name}}" />
+            <meta name="description" content="{{ page.content| default(site.description) | excerpt(15) }}">
+            <meta
+            name="author" content="{{site.name}}"/>
             {# Metadata:twitter #}
-            <meta name="twitter:card" content="summary" />
-            <meta name="twitter:site" content="{{site.name}}" />
-            <meta name="twitter:creator" content="{{site.name}}" />
+            <meta content="summary" name="twitter:card"/>
+            <meta name="twitter:site" content="{{site.name}}"/>
+            <meta
+            name="twitter:creator" content="{{site.name}}"/>
             {# Metadata:facebook #}
-            <meta property="og:url"          content="{{page.link}}" />
-            <meta property="og:type"         content="website" />
-            <meta property="og:locale"       content="es_CL" />
-            <meta property="og:title"        content="{{page.title}}" />
-            <meta property="og:description"  content="{{page.content|excerpt(15)}}" />
-            <meta property="og:image"        content="{{page.thumbnail.src}}" />
-            <meta property="og:site_name"    content="{{site.name}}" />
+            <meta property="og:url" content="{{page.link}}"/>
+            <meta content="website" property="og:type"/>
+            <meta content="es_CL" property="og:locale"/>
+            <meta property="og:title" content="{{page.title}}"/>
+            <meta property="og:description" content="{{page.content|excerpt(15)}}"/>
+            <meta property="og:image" content="{{page.thumbnail.src}}"/>
+            <meta
+            property="og:site_name" content="{{site.name}}"/>
             {# Metadata:ld-json #}
-            <script  type="application/ld+json">
-            {  
+            <script type="application/ld+json">
+                {  
                 "@context":"http://schema.org",
                 "@type":"Organization",
                 "name":"{{site.name}}",
@@ -35,54 +42,52 @@
                     ,
                     "logo":"{{getOptions().logo.url}}",
                     "contactPoint":[  
-                        {  
-                            "@type":"ContactPoint",
-                            "telephone":"{{getOptions().phone}}",
-                            "contactType":"customer service",
-                            "availableLanguage":"Spanish"
-                        }
+                    {  
+                    "@type":"ContactPoint",
+                    "telephone":"{{getOptions().phone}}",
+                    "contactType":"customer service",
+                    "availableLanguage":"Spanish"
+                    }
                     ],
                     "address":{  
-                        "@type":"PostalAddress",
-                        "streetAddress":"{{getOptions().address|excerpt(15)}}",
-                        "addressLocality":"{{getOptions().addressLocality|default('Rancagua')}}",
-                        "addressRegion":"{{getOptions().addressRegion|default('Ohiggins')}}",
-                        "addressCountry":"Chile"
+                    "@type":"PostalAddress",
+                    "streetAddress":"{{getOptions().address|excerpt(15)}}",
+                    "addressLocality":"{{getOptions().addressLocality|default('Rancagua')}}",
+                    "addressRegion":"{{getOptions().addressRegion|default('Ohiggins')}}",
+                    "addressCountry":"Chile"
                     }
                 {% endif %}
-            }
+                }
             </script>
         {% endif %}
         {# script:js-theme #}
-        <script> var __dirsite = '{{site.link}}', __dirtheme = '{{theme.link}}';</script>
+        <script>
+            var __dirsite = '{{ site.link }}',
+                __dirtheme = '{{ theme.link }}';
+        </script>
         {# wp_head #}
         {{fn("wp_head")}}
         {% block head %}
-            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css">
-            <style>{% include "static/default.css" %}</style>
+            <style>
+                {% include "static/bundle.css" %}</style>
         {% endblock %}
     </head>
     {% block body %}
         <body class="{{getClassBody(customClassBody)}}">
-    {% endblock %}
-        <main>
-            {# header #}
-            {% block header %}
-                {% include 'views/includes/header.twig' %}
-            {% endblock %}
-            {# content #}
-            {% block content %}
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                    Praesentium quisquam doloribus perferendis temporibus, 
-                    sit ad assumenda eum corrupti illo labore quaerat 
-                    vitae libero sequi ipsam at magnam saepe 
-                    molestiae atque.
-            {% endblock %}
-            {# footer #}
-            {% block footer %}
-                {% include 'views/includes/footer.twig' %}
-            {% endblock %}
-        </main>
-        <script type="module" src="{{theme.link}}/static/js/index.js"></script>
+        {% endblock %}
+        {# header #}
+        {% block header %}
+            {% include 'views/includes/header.twig' %}
+        {% endblock %}
+        {# content #}
+        {% block content %}
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+        {% endblock %}
+        {# footer #}
+        {% block footer %}
+            {% include 'views/includes/footer.twig' %}
+        {% endblock %}
+        <script src="{{theme.link}}/static/bundle.js"></script>
     </body>
 </html>
+{% endspaceless %}

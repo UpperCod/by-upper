@@ -2,18 +2,14 @@ import pkg from "./package.json";
 import resolve from "rollup-plugin-node-resolve";
 import { terser } from "rollup-plugin-terser";
 import sucrase from "rollup-plugin-sucrase";
-import del from "rollup-plugin-delete";
 import postcss from "rollup-plugin-postcss";
 
-
 let plugins = [
-	del({
-		targets: [pkg.output]
-	}),
 	resolve({
 		extensions: [".js", ".ts"]
 	}),
 	postcss({
+		extract: true,
 		minimize: true
 	}),
 	sucrase({
@@ -32,8 +28,8 @@ export default {
 	input: pkg.source,
 	output: [
 		{
-			dir: pkg.output,
-			format: "esm",
+			file: pkg.output,
+			format: "iife",
 			sourcemap: true
 		}
 	],
