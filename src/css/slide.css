@@ -19,7 +19,10 @@
 	align-items: center;
 	color: white;
 }
-.SlideSlides-item h1 {
+.SlideSlides-text {
+	padding-left: 10%;
+}
+.SlideSlides-text h1 {
 	font-size: 60px;
 }
 
