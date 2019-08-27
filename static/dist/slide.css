@@ -1,0 +1,80 @@
+.Slide {
+	width: 100%;
+	height: 100%;
+	background: black;
+	position: relative;
+}
+
+.SlideSlides,
+.SlideSlides-item {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+
+.SlideSlides-item {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	color: white;
+}
+
+.SlideSlides-text {
+	padding-left: 10%;
+}
+
+.SlideSlides-text h1 {
+	font-size: 60px;
+}
+
+.SlideNav {
+	width: 100%;
+	position: absolute;
+	bottom: 30px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	color: white;
+	text-align: center;
+}
+
+.SlideNav-link {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	    -ms-flex-flow: row wrap;
+	        flex-flow: row wrap;
+	-webkit-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+
+.SlideNav-link div:first-child {
+	width: 20px;
+	height: 20px;
+	margin: auto;
+	background: rgba(255, 255, 255, 0.1);
+}
+
+.SlideNav-link div:last-child {
+	-webkit-box-flex: 100%;
+	    -ms-flex: 100%;
+	        flex: 100%;
+	text-align: center;
+	padding: 20px;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}

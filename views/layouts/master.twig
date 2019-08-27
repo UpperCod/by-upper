@@ -70,7 +70,9 @@
         {{fn("wp_head")}}
         {% block head %}
             <style>
-                {% include "static/bundle.css" %}</style>
+                {% include "static/dist/normalize.css" %}
+                {% include "static/dist/default.css" %}
+            </style>
         {% endblock %}
     </head>
     {% block body %}

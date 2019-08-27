@@ -2,26 +2,11 @@
 	"name": "wordpress-base",
 	"description": "v2",
 	"version": "0.0.0",
-	"source": "src/index.js",
-	"output": "static/bundle.js",
 	"scripts": {
-		"build": "rollup -c",
-		"dev": "rollup -c -w",
-		"test": "karma start --single-run --browsers ChromeHeadless karma.conf.js",
-		"prepare": "npm run build"
+		"build" : "bundle src/*.js,src/css/*.css static/dist",
+		"dev" : "bundle src/*.js,src/css/*.css static/dist -w"
 	},
 	"dependencies": {
-		"@atomico/core": "^1.4.x",
-		"@atomico/router": "^0.1.x",
-		"@atomico/element": "^0.6.x"
-	},
-	"devDependencies": {
-		"rollup": "^1.7.4",
-		"rollup-plugin-browsersync": "^1.0.0",
-		"rollup-plugin-bundle-size": "^1.0.3",
-		"rollup-plugin-node-resolve": "^4.0.1",
-		"rollup-plugin-postcss": "^2.0.3",
-		"rollup-plugin-sucrase": "^2.1.0",
-		"rollup-plugin-terser": "^4.0.4"
+		"bundle-cli": "^0.1.0"
 	}
 }
