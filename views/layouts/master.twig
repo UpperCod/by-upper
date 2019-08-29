@@ -72,8 +72,12 @@
             <style>
                 {% include "static/dist/normalize.css" %}
                 {% include "static/dist/default.css" %}
+                {% for style in page_styles %}
+                    {% include "static/dist/"~style %}
+                {% endfor %}
             </style>
         {% endblock %}
+       
     </head>
     {% block body %}
         <body class="{{getClassBody(customClassBody)}}">
@@ -90,7 +94,23 @@
         {% block footer %}
             {% include 'views/includes/footer.twig' %}
         {% endblock %}
-        <script src="{{theme.link}}/static/bundle.js"></script>
+        {% if page_scripts %}
+            <script>
+            function shimport(src) {
+                try {
+                new Function('import(\"' + src + '\")')();
+                } catch (e) {
+                var s = document.createElement('script');
+                s.src = 'https://unpkg.com/shimport';
+                s.dataset.main = src;
+                document.head.appendChild(s);
+                }
+            }
+            {% for script in page_scripts %}
+                shimport(__dirtheme+"/static/dist/{{script}}");
+            {% endfor %}
+            </script>
+        {% endif %}
     </body>
 </html>
 {% endspaceless %}

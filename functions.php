@@ -24,7 +24,7 @@ if ( ! class_exists( 'Timber' ) ) {
 	return;
 }
 
-require_once __DIR__."/script/custom-twig.php";
+require_once __DIR__."/backend/custom-twig.php";
 
 add_theme_support( 'post-formats' );
 add_theme_support( 'post-thumbnails' );
@@ -51,4 +51,9 @@ if( function_exists('acf_update_setting')){
 add_filter('upload_mimes', function ($mimes) {
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
+});
+
+
+Routes::map('theme/:form', function($params){
+    Routes::load('backend/router-form.php', $params,null, 200);
 });

@@ -1,8 +1,8 @@
+
 {% extends 'views/layouts/master.twig' %}
 
 {% block content %}
-    {% include "views/includes/welcome/slide.twig" %}
     {% for item in page.get_field('blocks') %}
-        {% include "views/includes/welcome/"~ item.acf_fc_layout ~".twig" with item %}
+        {% include "views/includes/home/"~ item.acf_fc_layout ~".twig" with item %}
     {% endfor %}
 {% endblock %}

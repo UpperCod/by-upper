@@ -1,63 +1,72 @@
-# By upper
+# wordpres-base
 
-Es un micro template para trabajar con wordpress, posee un esqueleto similar al que ofrece [Pine](https://github.com/azeemhassni/pine)
+Es un template para wordpress, pensado para un diseño desde 0, entrega un espacio de trabajo cómodo y orientado a un desarrollo escalable gracias al uso de Twig para manejar plantillas mediante el plugin Timber y un espacio frontend amigable.
 
+## frontend
 
-## Directorio
-
-El esqueleto básico backend es minimalista.
-
-```
-by-upper
-├───assets
-|   ├───style
-|   └───index.js
-├───script
-|   └───custom-twig.php
-├───static
-└───views
-  ├───includes
-  |   ├───footer.twig
-  |   └───header.twig
-  ├───layouts
-  |   └───master.twig
-  └───pages
-      ├───index.twig
-      └───404.twig
+```json
+{
+	"scripts": {
+		"build": "bundle src/*.js,src/css/*.css static/dist",
+		"dev": "bundle src/*.js,src/css/*.css static/dist -w"
+	}
+}
 ```
 
-## Utilidades frontend
+ud solo necesita arrancar 2 tareas para su desarrollo, la exportación es moderna a base de módulos es6, el soporte para navegadores `default last 2 versions)`, checar [browserlist](https://github.com/browserslist/browserslist), para definir otro prefijo mediante el uso del flag `--browsers`, este ajustara bable y postcss.
 
-### Rollup
+**El css se importan inline en el documento**.
 
-ya viene preconfigurado para trabajar con rollup, dando soporte por defecto sobre las siguientes tecnologías:
+## backend
 
-- [node-resolve](https://github.com/rollup/rollup-plugin-node-resolve) : permite importar modulos desde node_modules, hacia el bundle js final.
-- [postcss](https://postcss.org/) : permite extender fasilmente el codigo css.
-  - [postcss-preset-env](https://preset-env.cssdb.org/) : añade soporte para funcionalidades actuales dentro del css.
-  - [css-mqpacker](https://github.com/hail2u/node-css-mqpacker) : permite reducir el tamaño del css agrupando reglas de media.
-  - [merge-rules](https://github.com/ben-eb/postcss-merge-rules) : permite reducir el tamaño del css agrupando reglas de selectores.
-  - [cssnano](http://cssnano.co/) : comprime el codigo css.
-- [buble](https://buble.surge.sh/guide/) : permite escribir es6 moderno.
+## variables de configuración
 
+la dependencias generadas por bundle, pueden ser declarados mediante las siguientes constantes.
 
-## Funciones especiales
+```twig
+{% set page_scripts = ["index.js"] %}
+{% set page_styles = ["index.css"] %}
+```
 
-| Funcion | argumentos | descripción |
-|:--------|:-----------|:------------|
-| getField | ... | proxy de `get_field` |
-| getOptions |  | obtiene de acf los fields de las paginas de opción |
-| getMenu | ... | proxy de `Timbet\Menu` |
-| getPosts | ... | proxy de `Timber\Timber::get_posts` |
-| getTerm | ... | proxy de `Timber\Term` |
-| getTerms | ... | proxy de `Timber\Timber::get_terms` |
-| getPost | ... | proxy de `Timber\Post` |
-| getClassBody | ...$appendClassName | permite añadir u optener las clases asociadas al a página |
-| setStyleInline | object | permite generar el atributo `style` con css inline |
-| setAttrs | object | permite imprimir atributos desde un objeto |
+## creacion de formularios
 
-## Filtros especiales
+ud puede crear formularios de forma simple mediante el uso de la función `createForm`, este permite generar un token con data inmutable para luego comprobar entre sesiones, el token solo se destruye una vez validado el form, eg:
 
-|Filtro | descripción |
-|:------|:------------|
-| normalize | limpia el html limitando su uso a cierto tipos de caracteres `<strong><a><br>` |
+```twig
+<form {{ createForm({
+	subject : "Mensaje desde el sitio",
+	to : form.to,
+	back : page.link
+}) }}>
+	<input required name="form:Nombre" placeholder="{{form.inputName|default("Nombre")}}"/>
+	<input required name="form:Telefono" placeholder="{{form.inputTel|default("Telefono")}}"/>
+	<input type="email" required name="form:Email" placeholder="{{form.inputEmail|default("Email")}}"/>
+	<input required name="form:Desde" type="hidden" value="{{page.link}}"/>
+	<textarea required name="form:Mensaje" placeholder="{{form.inputMessage|default("Mensaje")}}" rows="1"></textarea>
+	<button>Enviar mensaje</button>
+</form>
+```
+
+## funciones especiales
+
+algunas funciones propias de Timber fueron incluidas como funciones de twig, para facilitar la construcción de témplate sin la necesidad de invocar php.
+
+### getPost(WpQuery) y getPosts(WpQuery)
+
+### getMenu(Query)
+
+### getTerm(Query) y getTerms(Query)
+
+### getOptions()
+
+### getField()
+
+### client
+
+permite saber el tipo dispositivo y navegador usado por el cliente
+
+```twig
+client("chrome")
+```
+
+### createForm

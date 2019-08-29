@@ -3,8 +3,8 @@
 	"description": "v2",
 	"version": "0.0.0",
 	"scripts": {
-		"build" : "bundle src/*.js,src/css/*.css static/dist",
-		"dev" : "bundle src/*.js,src/css/*.css static/dist -w"
+		"build": "bundle src/*.js,src/css/*.css static/dist",
+		"dev": "bundle src/*.js,src/css/*.css static/dist -w"
 	},
 	"dependencies": {
 		"bundle-cli": "^0.1.0"

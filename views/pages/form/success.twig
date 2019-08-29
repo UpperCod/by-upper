@@ -1,0 +1,28 @@
+{% extends 'views/layouts/master.twig' %}
+
+{% block footer %}{% endblock %}
+
+{% block content %}
+    <section class="FormMessage">
+        <div class="FormMessage-content">
+            <div class="FormMessage-image">
+                <video style="margin-top:-100px" width="280px"  playsinline loop muted autoplay preload src="https://uploads-ssl.webflow.com/5bcb46130508ef456a7b2930/5d05f9736a93605e6d950a1e_drawkit-grape-pack-illustration-4-transcode.mp4"></video>
+            </div>
+            <h2 class="Title">Tu mensaje <strong>{{form.data.Nombre}}</strong> ha sido enviado con exito!</h2>
+            <table class="FormMessage-data">
+                {% for index,value in form.data %}
+                    <tr>
+                        <td><strong>{{index}}</strong></td>
+                        <td>:</td>
+                        <td>{{value}}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br>
+            <br>
+            <div>
+                    <a class="FormMessage-link" href="{{form.config.back}}">Regresar</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}
