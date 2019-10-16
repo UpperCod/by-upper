@@ -213,9 +213,15 @@ class CustomTwig extends \Twig_Extension{
     }
     function imageSet($responsive){
         $style = "";
+        $def = "default";
         $id = $this->createId();
+        if(isset($responsive[$def])){
+            $style.= ".__{$id}{background:{$responsive[$def]}}";
+        }
         foreach($responsive as $index => $value){
-            $style .= "@media (max-width: ${index}px){ .__{$id}{background:{$value}} }";
+            if($index != $def){
+                $style .= "@media (max-width: ${index}px){ .__{$id}{background:{$value}} }";
+            }
         }
         if($style){
             echo "<style>{$style}</style>";

@@ -1,30 +1,7 @@
-<section class="Slide">
-    <div class="SlideSlides-item">
-        <div class="SlideSlides-text">
-        <h1>Se reparan 
-        calefón</h1>
-        {{component.button({
-            label : "ver mas",
-            icon : "https://doschzharf1i9.cloudfront.net/personal_assets/sln/57x57/f1c2fce9-4105-43b0-933f-30878a1938d0.png"
-        })}}
-        </div>
-    </div>
-    <nav class="SlideNav">
-        <a class="SlideNav-link">
-            <div></div>
-            <div>yo reparo</div>
-        </a>
-        <a class="SlideNav-link">
-            <div></div>
-            <div>Comentarios</div>
-        </a>
-        <a class="SlideNav-link">
-            <div></div>
-            <div>Whasapp</div>
-        </a>
-        <a class="SlideNav-link">
-            <div></div>
-            <div>Llamar</div>
-        </a>
-    </nav>
+<section class="Slide-box">
+    {% set classId = imageSet({
+        default : "url("~ slides.background.url | resize(1380) ~")no-repeat center/cover",
+        520 : "url("~ slides.background.url | resize(520) ~")no-repeat center/cover"
+    }) %}
+    <div class="Layer {{classId}}"></div>
 </section>
