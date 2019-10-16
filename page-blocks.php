@@ -1,10 +1,10 @@
 <?php
 /**
- * Template Name: home
+ * Template Name: Bloques
  */
 use Timber\Timber;
 
 $context = Timber::get_context();
 $context['page'] = Timber::get_post();
 
-Timber::render('views/pages/home.twig', $context);
+Timber::render('views/pages/blocks.twig', $context);

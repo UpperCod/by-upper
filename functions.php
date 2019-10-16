@@ -1,4 +1,7 @@
 <?php
+
+const FORM_SECRET = "GnLTbZnqpG";
+const FORM_METHOD = "AES-128-CBC";
 /*
  * Die and Dump method
  */
