@@ -7,6 +7,6 @@
 		"dev": "bundle src/*.js,src/css/*.css static/dist -w"
 	},
 	"dependencies": {
-		"bundle-cli": "^0.1.0"
+		"bundle-cli": "^0.3.0"
 	}
 }
