@@ -1,12 +1,15 @@
 {
-	"name": "wordpress-base",
-	"description": "v2",
-	"version": "0.0.0",
-	"scripts": {
-		"build": "bundle src/*.js,src/css/*.css static/dist",
-		"dev": "bundle src/*.js,src/css/*.css static/dist -w"
-	},
-	"dependencies": {
-		"bundle-cli": "^0.3.0"
-	}
+  "name": "wordpress-base",
+  "description": "v2",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "bundle src/*.{js,css} static --watch",
+    "build": "bundle src/*.{js,css} static --minify"
+  },
+  "dependencies": {
+    "atomico": "^0.20.0"
+  },
+  "devDependencies": {
+    "bundle-cli": "^0.19.1"
+  }
 }

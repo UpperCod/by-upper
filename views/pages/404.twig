@@ -1,24 +1,5 @@
 {% extends 'views/layouts/master.twig' %}
 
 {% block content %}
-    <link href="https://fonts.googleapis.com/css?family=Muli:200,400" rel="stylesheet">
-    <style>
-        body{font-family: 'Muli', sans-serif;}
-        h1{font-size: 15vh;font-weight : 100;margin:0px}
-        p{text-align: center;opacity:.5}
-        button{background: transparent;border: 1px solid black;border-radius: 100px;padding:.5rem 1.2rem;font-size:14px;cursor:pointer}
-    </style>
-    <div class="row" style="height:100%;padding: 1rem;">
-        <div class="col">
-            <h1>
-                404
-            </h1>
-            <p>
-                Lo sentimos este contenido<br>no está disponible<br><br>
-                <a href="{{site.link}}">
-                    <button>Regresar al sitio principal</button>
-                </a>
-            </p>
-        </div>
-    </div>
+    {{fn("the_content")}}
 {% endblock %}

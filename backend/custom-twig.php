@@ -12,7 +12,6 @@ class CustomTwig extends \Twig_Extension{
             new \Twig_SimpleFunction('setAttrs', [$this,'setAttrs']),
             new \Twig_SimpleFunction('isEnable', [$this,'isEnable']),
             new \Twig_SimpleFunction('getOptions', [$this,'getOptions']),
-            new \Twig_SimpleFunction('getClassBody', [$this,'getClassBody']),
             new \Twig_SimpleFunction('setStyleInline', [$this,'setStyleInline']),
             new \Twig_SimpleFunction('getField', [$this,'getField']),
             new \Twig_SimpleFunction('client', [$this,'client']),
@@ -95,9 +94,7 @@ class CustomTwig extends \Twig_Extension{
     function getPost($post){
         return new Timber\Post($post);
     }
-    function getClassBody(...$append){
-        return join(" ",array_merge(get_body_class(), $append));
-    }
+   
     function setStyleInline(array $style){
         $props = [];
         foreach($style as $index => $value){

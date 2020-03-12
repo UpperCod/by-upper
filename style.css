@@ -4,3 +4,4 @@
 * Version: 0.1
 * Description: Awesome theme uses the awesomeness of Timber, Rollup and Scss.
 */
+@import "./static/bundle.css";

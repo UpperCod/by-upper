@@ -1,116 +1,24 @@
 {% spaceless %}
-{% import "views/includes/components.twig" as component %}
 <!DOCTYPE html>
-<html lang="es_CL">
-    <head>
-        <meta charset="UTF-8">
-        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
-        <meta content="IE=edge" http-equiv="X-UA-Compatible">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <link
-        rel="shortcut icon" href="{{theme.link}}/static/favicon.png">
-        {# metadata:seo #}
-        <title>
-            {{ wp_title }}
-        </title>
-        {% if enable_seo %}
-            <meta name="description" content="{{ page.content| default(site.description) | excerpt(15) }}">
-            <meta
-            name="author" content="{{site.name}}"/>
-            {# Metadata:twitter #}
-            <meta content="summary" name="twitter:card"/>
-            <meta name="twitter:site" content="{{site.name}}"/>
-            <meta
-            name="twitter:creator" content="{{site.name}}"/>
-            {# Metadata:facebook #}
-            <meta property="og:url" content="{{page.link}}"/>
-            <meta content="website" property="og:type"/>
-            <meta content="es_CL" property="og:locale"/>
-            <meta property="og:title" content="{{page.title}}"/>
-            <meta property="og:description" content="{{page.content|excerpt(15)}}"/>
-            <meta property="og:image" content="{{page.thumbnail.src}}"/>
-            <meta
-            property="og:site_name" content="{{site.name}}"/>
-            {# Metadata:ld-json #}
-            <script type="application/ld+json">
-                {  
-                "@context":"http://schema.org",
-                "@type":"Organization",
-                "name":"{{site.name}}",
-                "description":"{{site.description}}",
-                "url":"{{site.link}}"
-                {% if getOptions() %}
-                    ,
-                    "logo":"{{getOptions().logo.url}}",
-                    "contactPoint":[  
-                    {  
-                    "@type":"ContactPoint",
-                    "telephone":"{{getOptions().phone}}",
-                    "contactType":"customer service",
-                    "availableLanguage":"Spanish"
-                    }
-                    ],
-                    "address":{  
-                    "@type":"PostalAddress",
-                    "streetAddress":"{{getOptions().address|excerpt(15)}}",
-                    "addressLocality":"{{getOptions().addressLocality|default('Rancagua')}}",
-                    "addressRegion":"{{getOptions().addressRegion|default('Ohiggins')}}",
-                    "addressCountry":"Chile"
-                    }
-                {% endif %}
-                }
-            </script>
-        {% endif %}
-        {# script:js-theme #}
-        <script>
-            var __dirsite = '{{ site.link }}',
-                __dirtheme = '{{ theme.link }}';
-        </script>
-        {# wp_head #}
-        {{fn("wp_head")}}
-        {% block head %}
-            <style>
-                {% include "static/dist/normalize.css" %}
-                {% include "static/dist/default.css" %}
-                {% for style in page_styles %}
-                    {% include "static/dist/"~style %}
-                {% endfor %}
-            </style>
-        {% endblock %}
-       
-    </head>
-    {% block body %}
-        <body class="{{getClassBody(customClassBody)}}">
-        {% endblock %}
-        {# header #}
-        {% block header %}
-            {% include 'views/includes/header.twig' %}
-        {% endblock %}
-        {# content #}
-        {% block content %}
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-        {% endblock %}
-        {# footer #}
-        {% block footer %}
-            {% include 'views/includes/footer.twig' %}
-        {% endblock %}
-        {% if page_scripts %}
-            <script>
-            function shimport(src) {
-                try {
-                new Function('import(\"' + src + '\")')();
-                } catch (e) {
-                var s = document.createElement('script');
-                s.src = 'https://unpkg.com/shimport';
-                s.dataset.main = src;
-                document.head.appendChild(s);
-                }
-            }
-            {% for script in page_scripts %}
-                shimport(__dirtheme+"/static/dist/{{script}}");
-            {% endfor %}
-            </script>
-        {% endif %}
-    </body>
-</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{fn("wp_head")}}
+</head>
+<body {{fn("body_class")}}>
+    {% block header %}
+        {% include "includes/header.twig" %}
+    {% endblock %}
+    
+    <main {{fn("post_class","site-main")}}>  
+    {% block content %}
+        {{fn("the_content")}}
+    {% endblock %}
+    </main>
+    {% block footer %}
+         {% include "includes/footer.twig" %}
+    {% endblock %}
+</body>
+</html>     
 {% endspaceless %}

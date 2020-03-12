@@ -1,1 +1,5 @@
-{% include "views/pages/canvas.twig" %}
+{% extends 'views/layouts/master.twig' %}
+
+{% block content %}
+    {{fn("the_content")}}
+{% endblock %}
