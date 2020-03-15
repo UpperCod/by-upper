@@ -10,6 +10,6 @@
     "atomico": "^0.20.0"
   },
   "devDependencies": {
-    "bundle-cli": "^0.19.1"
+    "bundle-cli": "^0.20.3"
   }
 }
