@@ -1,11 +1,12 @@
 :root {
-  --theme-primary: #4caf7d;
-  --theme-background: #04302f;
+  --theme-primary: #fff;
+  --theme-second: ##ffd388;
+  --theme-background: #303030;
 }
 
-html,
 body {
-  background: #f1f1f9;
+  background: var(--theme-background);
+  color: var(--theme-primary);
 }
 
 a,

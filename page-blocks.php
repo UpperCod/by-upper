@@ -2,9 +2,6 @@
 /**
  * Template Name: Bloques
  */
-use Timber\Timber;
-
-$context = Timber::get_context();
-$context['page'] = Timber::get_post();
+require __DIR__."/load-context.php";
 
 Timber::render('views/pages/blocks.twig', $context);

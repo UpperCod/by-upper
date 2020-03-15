@@ -1,9 +1,6 @@
 <?php
 
-use Timber\Timber;
-
-$context = Timber::get_context();
-$context['page'] = Timber::get_post();
+require __DIR__."/load-context.php";
 
 $dir = "views/pages/";
 $view = [];
