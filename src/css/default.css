@@ -1,31 +1,28 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap');
-
 :root {
-	--theme-primary: #4caf7d;
-	--theme-background : #04302F;
+  --theme-primary: #4caf7d;
+  --theme-background: #04302f;
 }
 
 html,
 body {
-	width: 100%;
-	height: 100%;
-	margin: 0px;
-	background: #f1f1f9;
-	font-family: 'Poppins', sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  background: #f1f1f9;
 }
 
 a,
 input,
 textarea,
 button {
-	color: unset;
-	font-family: unset;
+  color: unset;
+  font-family: unset;
 }
 
-.Layer{
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0px;
-	left: 0px;
+.Layer {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
