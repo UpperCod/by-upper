@@ -1,8 +1,6 @@
 <?php
 
-use Timber\Timber;
-
-$context = Timber::get_context();
+require __DIR__."/../load-context.php";
 
 global $params;
 
@@ -24,7 +22,7 @@ if(isset($_SESSION[$form])){
 
     foreach($formServerConfig as $index => $value){
         if($value !== $formClientConfig[$index]){
-            Timber::render('views/pages/form/error.twig', $context);
+            render('views/pages/form/error.twig', $context);
             break;
         }
     }
@@ -58,9 +56,9 @@ if(isset($_SESSION[$form])){
     );
 
 
-    Timber::render('views/pages/form/success.twig', $context);
+    render('views/pages/form/success.twig', $context);
 
     unset($_SESSION[$form]);
 }else{
-    Timber::render('views/pages/form/error.twig', $context);
+    render('views/pages/form/error.twig', $context);
 }

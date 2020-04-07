@@ -25,4 +25,5 @@ if( is_404() ) {
 $view[] =$dir."index.twig";
 
 
-Timber::render($view, $context);
+
+render($view,$context);

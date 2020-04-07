@@ -7,9 +7,9 @@
     "build": "bundle src/*.{js,css} static --minify"
   },
   "dependencies": {
-    "atomico": "^0.20.0"
+    "atomico": "^0.21.1"
   },
   "devDependencies": {
-    "bundle-cli": "^0.20.3"
+    "bundle-cli": "^0.22.0"
   }
 }
