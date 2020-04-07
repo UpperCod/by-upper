@@ -1,0 +1,8 @@
+<section class="hero -box">
+    {% set classId =  imageSet({
+        default : "url("~ background.url ~")no-repeat center/cover",
+        520 : "url("~ background.url | resize(520) ~")no-repeat center/cover",
+    }) %}
+    <div class="layer {{classId}}"></div>
+    <footer></footer>
+</section>
