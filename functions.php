@@ -2,7 +2,7 @@
 
 const FORM_SECRET = "GnLTbZnqpG";
 const FORM_METHOD = "AES-128-CBC";
-const TIMBER_CACHE = 600;
+const TIMBER_CACHE = 0;
 /*
  * Die and Dump method
  */

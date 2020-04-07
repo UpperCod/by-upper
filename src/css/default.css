@@ -1,12 +1,19 @@
 :root {
-  --theme-primary: #fff;
-  --theme-second: ##ffd388;
+  --theme-primary: black;
+  --theme-second: tomato;
+  --theme-second-contras: white;
+  --theme-second-shadow-x2: 0px 12px 22px rgba(255, 75, 75, 0.25);
+  --theme-box-radius: 5px;
   --theme-background: #303030;
 }
 
 body {
   background: var(--theme-background);
   color: var(--theme-primary);
+}
+
+a {
+  text-decoration: none;
 }
 
 a,
@@ -56,4 +63,16 @@ h5.title {
 
 h6.title {
   font-size: 14px;
+}
+
+.button {
+  background: var(--theme-second);
+  color: var(--theme-second-contras);
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 2px;
+  box-shadow: var(--theme-second-shadow-x2);
+  border-radius: var(--theme-box-radius);
 }

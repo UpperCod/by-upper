@@ -3,6 +3,17 @@
         default : "url("~ background.url ~")no-repeat center/cover",
         520 : "url("~ background.url | resize(520) ~")no-repeat center/cover",
     }) %}
-    <div class="layer {{classId}}"></div>
+    <div class="layer">
+        <div class="layer {{classId}}">
+            <div class="layer hero -background"></div>
+        </div>
+    </div>
+    <div class="hero -content">
+        <span>{{pretitle}}</span>
+        <h1>{{title}}</h1>
+        {% if button %}
+            <a class="button" href="{{button.link}}">{{button.title}}</a>
+        {% endif %}
+    </div>  
     <footer></footer>
 </section>
