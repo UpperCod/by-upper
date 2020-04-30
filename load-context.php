@@ -3,7 +3,7 @@
 use Timber\Timber;
 
 $context = Timber::get_context();
-$context["page"] = Timber::get_post(is_home() ? get_option("page_for_posts"): null);
+$context["page"] = Timber::get_post();
 
 
 if(function_exists("ACF")){
