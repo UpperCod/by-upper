@@ -19,12 +19,22 @@ class CustomTwig extends \Twig_Extension{
             new \Twig_SimpleFunction('imageSet', [$this,'imageSet']),
         ];
     }
-    
+    function columnLayout($list,$count){
+        $count-=1;
+        $columns = array_fill(0,$count,[]);
+        $current = 0;
+        foreach($list as $index=>$value){
+            $columns[$current++][] = $value;
+            $current = $current > $count ? 0 : $current;
+        }
+        return $columns;
+    }
     function getFilters(){
         return [
             new \Twig_SimpleFilter('normalize', [$this,'normalize']),
             new \Twig_SimpleFilter('summary', [$this,'summary']),
             new \Twig_SimpleFilter('normalizeHash', [$this,'normalizeHash']),
+            new \Twig_SimpleFilter('columnLayout', [$this,'columnLayout']),
         ];
     }
     function normalizeHash($string) {
