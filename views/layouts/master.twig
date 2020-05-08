@@ -22,10 +22,11 @@
     {% block content %}
         {{fn("the_content")}}
     {% endblock %}
-    </main>
     {% block footer %}
          {% include "includes/footer.twig" %}
     {% endblock %}
+    </main>
+   
     <script src="{{theme.link}}/static/bundle.js"></script>
 </body>
 </html>     
